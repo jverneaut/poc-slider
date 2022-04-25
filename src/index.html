@@ -4,16 +4,77 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>POC Slider - Slider</title>
     <link rel="stylesheet" href="./index.scss" />
   </head>
   <body>
-    <div data-component="Slider"></div>
+    <style type="text/css">
+      .is-active {
+        box-shadow: 0 0 0 3px blue;
+      }
+    </style>
 
-    <div class="container">
-      <h1>Index</h1>
+    <div class="p-10 overflow-hidden">
+      <div data-component="Slider" data-option-fit-bounds data-option-contain class="space-y-4">
+        <div data-component="SliderDrag" data-ref="wrapper" class="space-x-4 whitespace-nowrap">
+          <div data-component="SliderItem" class="inline-block rounded">
+            <div class="flex items-center justify-center w-96 h-96 bg-gray-400 rounded">
+              <span class="text-2xl">#1</span>
+            </div>
+          </div>
+          <div data-component="SliderItem" class="inline-block rounded">
+            <div class="flex items-center justify-center w-96 h-96 bg-gray-400 rounded">
+              <span class="text-2xl">#2</span>
+            </div>
+          </div>
+          <div data-component="SliderItem" class="inline-block rounded">
+            <div class="flex items-center justify-center w-96 h-96 bg-gray-400 rounded">
+              <span class="text-2xl">#3</span>
+            </div>
+          </div>
+          <div data-component="SliderItem" class="inline-block rounded">
+            <div class="flex items-center justify-center w-96 h-96 bg-gray-400 rounded">
+              <span class="text-2xl">#4</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <button data-component="SliderBtn" data-option-prev="true">Prev</button>
+          <button data-component="SliderBtn" data-option-next="true">Next</button>
+          <div
+            data-component="SliderProgress"
+            class="w-full rounded bg-gray-200 overflow-hidden"
+          >
+            <div
+              class="w-full h-2 bg-gray-400 rounded origin-left transition ease-out"
+              data-ref="progress"
+            ></div>
+          </div>
+          <div data-component="SliderCount" class="whitespace-nowrap">
+            <span data-ref="current">1</span> / 4
+          </div>
+        </div>
+        <div data-component="SliderDots" class="space-x-4">
+          <button type="button" data-ref="dots[]" class="rounded-full">
+            <span class="block w-2 h-2 bg-gray-400 rounded-full"></span>
+            <span class="sr-only">Go to slide #1</span>
+          </button>
+          <button type="button" data-ref="dots[]" class="rounded-full">
+            <span class="block w-2 h-2 bg-gray-400 rounded-full"></span>
+            <span class="sr-only">Go to slide #2</span>
+          </button>
+          <button type="button" data-ref="dots[]" class="rounded-full">
+            <span class="block w-2 h-2 bg-gray-400 rounded-full"></span>
+            <span class="sr-only">Go to slide #3</span>
+          </button>
+          <button type="button" data-ref="dots[]" class="rounded-full">
+            <span class="block w-2 h-2 bg-gray-400 rounded-full"></span>
+            <span class="sr-only">Go to slide #4</span>
+          </button>
+        </div>
+      </div>
     </div>
-
     <script src="./app.js" type="module"></script>
   </body>
 </html>

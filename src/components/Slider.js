@@ -1,9 +1,22 @@
-import { Base } from '@studiometa/js-toolkit';
+import {
+  Slider as SliderCore,
+  SliderBtn,
+  SliderCount,
+  SliderDots,
+  SliderDrag,
+  SliderItem,
+  SliderProgress,
+} from '@studiometa/ui';
 
-export default class Slider extends Base {
+export default class Slider extends SliderCore {
   static config = {
-    name: 'Slider',
+    components: {
+      SliderBtn,
+      SliderCount,
+      SliderDots,
+      SliderDrag,
+      SliderItem,
+      SliderProgress,
+    },
   };
-
-  mounted() {}
 }
