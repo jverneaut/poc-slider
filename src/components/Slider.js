@@ -4,12 +4,13 @@ import {
   SliderCount,
   SliderDots,
   SliderDrag,
-  SliderItem,
   SliderProgress,
 } from '@studiometa/ui';
 
+import SliderItem from './SliderItem';
 export default class Slider extends SliderCore {
   static config = {
+    name: 'Slider',
     components: {
       SliderBtn,
       SliderCount,
@@ -18,5 +19,14 @@ export default class Slider extends SliderCore {
       SliderItem,
       SliderProgress,
     },
+    emits: ['item-clicked'],
   };
+
+  /**
+   * `item-clicked` event pass through
+   * @param {HTMLElement} sliderItem
+   */
+  onSliderItemClicked(sliderItem) {
+    this.$emit('item-clicked', sliderItem);
+  }
 }

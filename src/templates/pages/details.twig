@@ -1,0 +1,28 @@
+{% extends "../layouts/base.twig" %}
+
+{% block content %}
+  {% set data = {} %}
+  {% for slide in slides %}
+    {% if slide.title == title %}
+      {% set data = slide %}
+    {% endif %}
+  {% endfor %}
+
+  {% set lorem = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, facere numquam? Commodi, est recusandae veritatis nihil temporibus ducimus deserunt nulla odit voluptates iste placeat eius, dolor laboriosam alias ab omnis?" %}
+
+  <main style="background-color: {{ data.hex }}">
+    <div class="flex flex-col items-center py-24">
+      <h1 class="text-center text-white text-7xl">{{ data.title }}</h1>
+    </div>
+
+    <img src="{{ data.image }}" class="h-96 w-full object-cover object-center" id="cover">
+
+    <div class="flex flex-col items-center py-12">
+      <div class="max-w-m max-w-md text-white space-y-8 leading-8">
+        {% for i in 1..10 %}
+          <p>{{ lorem }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+{% endblock %}

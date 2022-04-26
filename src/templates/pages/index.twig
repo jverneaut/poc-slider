@@ -1,0 +1,27 @@
+{% extends "../layouts/base.twig" %}
+
+{% block content %}
+  <div data-component="Transition">
+    <div data-component="Slider" data-option-fit-bounds class="overflow-hidden">
+      <div data-component="SliderDrag" data-ref="wrapper" class="whitespace-nowrap" style="font-size: 0">
+        {% for slide in slides %}
+          <a href="/{{ slide.title|lower }}.html" data-component="SliderItem" class="inline-block w-screen h-screen" style="background-color: {{ slide.hex }}">
+            <img src="{{ slide.image }}" alt="" class="w-1/2 h-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="clip-path: url(#clipPath)">
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+
+    <img data-ref="placeholder" style="clip-path: url(#placeholderClipPath)" class="absolute top-0 left-0 opacity-0">
+
+    {% for name in ['clipPath', 'placeholderClipPath'] %}
+      <svg height="0" width="0">
+        <defs>
+          <clipPath data-ref="{{ name }}" id="{{ name }}" clippathunits="objectBoundingBox">
+            <rect data-ref="{{ name }}Rect" x="0.05" y="0.05" width="0.9" height="0.9"></rect>
+          </clipPath>
+        </defs>
+      </svg>
+    {% endfor %}
+  </div>
+{% endblock %}

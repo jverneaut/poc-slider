@@ -1,11 +1,11 @@
 import { Base, createApp } from '@studiometa/js-toolkit';
-import Slider from './components/Slider';
+import Transition from './components/Transition';
 
 class App extends Base {
   static config = {
     name: 'App',
     components: {
-      Slider,
+      Transition,
     },
   };
 }

@@ -28,7 +28,9 @@
     "@studiometa/js-toolkit": "^2.0.1",
     "@studiometa/tailwind-config": "^1.1.0",
     "@studiometa/ui": "^0.2.7",
+    "motion": "^10.7.2",
     "sass": "^1.50.1",
-    "vite": "^2.9.5"
+    "vite": "^2.9.5",
+    "vite-plugin-twig": "^1.1.1"
   }
 }
