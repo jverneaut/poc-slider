@@ -53,7 +53,8 @@ export default class Transition extends Base {
    * @param {HTMLElement} sliderItem
    */
   onSliderItemClicked(sliderItem) {
-    addClass(this.$el, 'cursor-wait');
+    addClass(document.body, 'cursor-wait');
+    addClass(this.$el, 'pointer-events-none');
 
     this.sliderItem = sliderItem;
 
@@ -115,7 +116,7 @@ export default class Transition extends Base {
   }
 
   complete() {
-    removeClass(this.$el, 'cursor-wait');
+    removeClass(document.body, 'cursor-wait');
 
     animate(
       this.content,
@@ -124,9 +125,12 @@ export default class Transition extends Base {
       },
       { duration: 0.3 }
     ).finished.then(() => {
-      this.content.className = '';
-      this.$el.remove();
-      this.$destroy();
+      document.body.querySelector('main').outerHTML =
+        this.content.querySelector('main').outerHTML;
+      window.scrollTo(0, 0);
+
+      this.content.innerHTML = '';
+      this.$root.$update();
     });
   }
 
