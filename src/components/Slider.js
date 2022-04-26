@@ -8,6 +8,9 @@ import {
 } from '@studiometa/ui';
 
 import SliderItem from './SliderItem';
+
+import { animate } from 'motion';
+
 export default class Slider extends SliderCore {
   static config = {
     name: 'Slider',
@@ -28,5 +31,16 @@ export default class Slider extends SliderCore {
    */
   onSliderItemClicked(sliderItem) {
     this.$emit('item-clicked', sliderItem);
+  }
+
+  onGoto() {
+    console.log(this.currentSliderItem.$el);
+    animate(
+      this.$el,
+      {
+        backgroundColor: this.currentSliderItem.$el.dataset.color,
+      },
+      { duration: 1 }
+    );
   }
 }
