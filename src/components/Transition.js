@@ -41,9 +41,9 @@ export default class Transition extends Base {
     this.content = document.createElement('div');
     addClass(this.content, 'opacity-0 fixed top-0 left-0 w-screen pointer-events-none');
 
-    window.addEventListener('popstate', () => {
-      location.reload();
-    });
+    // window.addEventListener('popstate', () => {
+    //   location.reload();
+    // });
 
     document.body.appendChild(this.content);
   }
@@ -67,10 +67,11 @@ export default class Transition extends Base {
     const html = await (await fetch(url)).text();
 
     const parser = new DOMParser();
-    const document = parser.parseFromString(html, 'text/html');
+    const newDocument = parser.parseFromString(html, 'text/html');
 
-    this.content.innerHTML = document.body.innerHTML;
-    window.history.pushState('details', document.title, url);
+    this.content.innerHTML = newDocument.body.innerHTML;
+    window.history.pushState('details', newDocument.title, url);
+    document.title = newDocument.title;
 
     // Artificial delay
     setTimeout(this.animate.bind(this), 300);
