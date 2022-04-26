@@ -72,7 +72,8 @@ export default class Transition extends Base {
     this.content.innerHTML = document.body.innerHTML;
     window.history.pushState('details', document.title, url);
 
-    setTimeout(this.animate.bind(this), 1000);
+    // Artificial delay
+    setTimeout(this.animate.bind(this), 300);
   }
 
   animate() {
@@ -123,7 +124,7 @@ export default class Transition extends Base {
       {
         opacity: 1,
       },
-      { duration: 0.3 }
+      { duration: 0.8 }
     ).finished.then(() => {
       document.body.querySelector('main').outerHTML =
         this.content.querySelector('main').outerHTML;
