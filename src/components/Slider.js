@@ -29,8 +29,12 @@ export default class Slider extends SliderCore {
    * `item-clicked` event pass through
    * @param {HTMLElement} sliderItem
    */
-  onSliderItemClicked(sliderItem) {
-    this.$emit('item-clicked', sliderItem);
+  onSliderItemClicked(sliderItem, sliderItemIndex) {
+    if (sliderItemIndex !== this.currentIndex) {
+      this.goTo(sliderItemIndex);
+    } else {
+      this.$emit('item-clicked', sliderItem);
+    }
   }
 
   onGoto() {
