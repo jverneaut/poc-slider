@@ -1,7 +1,7 @@
 {% set items = [] %}
 
 {% for slide in slides %}
-  {% if slide.title != title %}
+  {% if slide.slug != slug %}
     {% set items = items|merge([slide]) %}
   {% endif %}
 {% endfor %}
@@ -10,9 +10,10 @@
   <div data-component="Slider" data-option-mode="center" data-option-fit-bounds class="overflow-hidden" style="background-color: {{ items[0].hex }}">
     <div data-component="SliderDrag" data-ref="wrapper" class="whitespace-nowrap" style="font-size: 0">
       {% for slide in items %}
-        {% if slide.title != title %}
-          <a href="/{{ slide.title|lower }}.html" data-component="SliderItem" class="inline-block relative w-2/3 h-screen" data-color="{{ slide.hex }}">
+        {% if slide.slug != slug %}
+          <a href="/{{ slide.slug }}.html" data-component="SliderItem" class="inline-block relative w-2/3 h-screen" data-color="{{ slide.hex }}">
             <img src="{{ slide.image }}" alt="" class="w-1/2 h-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="clip-path: url(#clipPath)">
+            <h2 class="absolute text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl">{{ slide.title }}</h2>
           </a>
         {% endif %}
       {% endfor %}

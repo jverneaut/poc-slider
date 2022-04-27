@@ -3,7 +3,7 @@
 {% block content %}
   {% set data = {} %}
   {% for slide in slides %}
-    {% if slide.title == title %}
+    {% if slide.slug == slug %}
       {% set data = slide %}
     {% endif %}
   {% endfor %}
