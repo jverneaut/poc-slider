@@ -57,6 +57,7 @@ export default class Transition extends Base {
     addClass(this.$el, 'pointer-events-none');
 
     this.sliderItem = sliderItem;
+    addClass(this.sliderItem, 'z-above');
 
     this.image = this.sliderItem.querySelector('img');
     this.$refs.placeholder.src = this.image.src;
