@@ -38,7 +38,6 @@ export default class Slider extends SliderCore {
   }
 
   onGoto() {
-    console.log(this.currentSliderItem.$el);
     animate(
       this.$el,
       {
